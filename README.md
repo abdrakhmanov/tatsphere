@@ -1,6 +1,5 @@
 # ТАТСФЕРА
 Платформа управления данными Республики Татарстан
-<hr class="col-3 col-md-2 mb-5">
 
 <!--
     Плагин для поиска по GitPages: https://jekyll-themes.com/dieghernan/algolia-jekyll-action
