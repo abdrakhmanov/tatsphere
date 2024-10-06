@@ -1,9 +1,13 @@
 # ТАТСФЕРА
 Платформа управления данными Республики Татарстан
+<hr class="col-3 col-md-2 mb-5">
 
-<!--https://vk.com/video_ext.php?oid=-225380536&id=456239017&hd=2&t=1h20m1s-->
+<!--
+    Плагин для поиска по GitPages: https://jekyll-themes.com/dieghernan/algolia-jekyll-action
+    Ссылка для встраивания видео с Би-Битвы 2.0: https://vk.com/video_ext.php?oid=-225380536&id=456239017&hd=2&t=1h20m1s
+-->
 
-## Про управление данными в Республике Татарстан
+## Публикации
 - [Шоукейс-фестиваль BI-БИТВА 2.0, посвященный российским BI-системам и их применению в государственном секторе](https://vk.com/video-225380536_456239017?t=1h20m1s)
 - [Какой должна быть организационная структура управления данными уровня региона](https://habr.com/ru/companies/digital_tatarstan/articles/783700/)
 - [Как мы собираемся дать ИИ и гражданам доступ в госуправление](https://habr.com/ru/companies/digital_tatarstan/articles/770680/)
