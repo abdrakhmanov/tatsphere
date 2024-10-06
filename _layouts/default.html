@@ -2,20 +2,14 @@
 <html lang="{{ site.lang | default: "en-US" }}" data-bs-theme="auto">
 
 <head>
-  <script src="../assets/js/color-modes.js"></script>
+  <script src="{{ '/assets/js/color-modes.js?v=' | append: site.github.build_revision | relative_url }}"></script>
 
   <meta charset="utf-8">
-  
+
   {% seo %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="generator" content="">
-  <title>
-    {{ site.title | default: site.github.repository_name }}
-    {% if page.title %} - {{ page.title }}{% endif %}
-  </title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
     integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
@@ -63,7 +57,7 @@
           <svg class="bi me-2 opacity-50" width="1em" height="1em">
             <use href="#sun-fill"></use>
           </svg>
-          Light
+          Светлая
           <svg class="bi ms-auto d-none" width="1em" height="1em">
             <use href="#check2"></use>
           </svg>
@@ -75,7 +69,7 @@
           <svg class="bi me-2 opacity-50" width="1em" height="1em">
             <use href="#moon-stars-fill"></use>
           </svg>
-          Dark
+          Тёмная
           <svg class="bi ms-auto d-none" width="1em" height="1em">
             <use href="#check2"></use>
           </svg>
@@ -87,7 +81,7 @@
           <svg class="bi me-2 opacity-50" width="1em" height="1em">
             <use href="#circle-half"></use>
           </svg>
-          Auto
+          Системная
           <svg class="bi ms-auto d-none" width="1em" height="1em">
             <use href="#check2"></use>
           </svg>
