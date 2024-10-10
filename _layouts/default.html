@@ -106,7 +106,9 @@
     {% if page.title != "None" %}
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
       <h1>
-        {{ site.title | default: site.github.repository_name }}
+        <a href="{{ '/' | relative_url }}" class="text-decoration-none">
+          {{ site.title | default: site.github.repository_name }}
+        </a>
         {% if page.title and page.title != site.title %} - {{ page.title }}{% endif %}
       </h1>
     </header>
