@@ -2,8 +2,10 @@
 <html lang="{{ site.lang | default: "en-US" }}" data-bs-theme="auto">
 
 <head>
-  <script src="{{ '/assets/js/color-modes.js?v=' | append: site.github.build_revision | relative_url }}"></script>
-
+  {% if page.hide_color_modes != true %}
+    <script src="{{ '/assets/js/color-modes.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+  {% endif %}
+  
   <meta charset="utf-8">
 
   {% seo %}
@@ -21,6 +23,7 @@
 </head>
 
 <body>
+  {% if page.hide_color_modes != true %}
   <!-- Toggle colors day/night -->
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
@@ -90,6 +93,7 @@
     </ul>
   </div>
   <!-- Toggle colors day/night -->
+  {% endif %}
 
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="arrow-right-circle" viewBox="0 0 16 16">
