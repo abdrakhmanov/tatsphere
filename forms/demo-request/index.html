@@ -3,5 +3,28 @@ layout: default
 title: Заказ демонстрации
 hide_color_modes: true
 ---
+<!--style>
+    .yaform-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%;
+        /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }
+
+    /* Then style the iframe to fit in the container div with full height and width */
+    .yaform-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style-->
 <script src="https://forms.yandex.ru/_static/embed.js"></script>
-<iframe src="https://forms.yandex.ru/u/67076bfbf47e73dd384a0a4d/?iframe=1" frameborder="0" name="ya-form-67076bfbf47e73dd384a0a4d" width="650"></iframe>
+<div class="yaform-container">
+    <iframe src="https://forms.yandex.ru/u/67076bfbf47e73dd384a0a4d/?iframe=1" frameborder="0"
+        name="ya-form-67076bfbf47e73dd384a0a4d" width="100%"></iframe>
+</div>
