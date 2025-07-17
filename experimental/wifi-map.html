@@ -52,7 +52,7 @@
       });
 
       // Загружаем JSON-файл с координатами
-      fetch('https://gist.githubusercontent.com/abdrakhmanov/2d1c8104011a391925bd0c2889e45988/raw/b267ed52c787d0654678a3d27f0fb4d1bc99b7ce/kazan_wifi.json')
+      fetch("{{ '/wifi/points.json?v=' | append: site.github.build_revision | relative_url }}")
         .then(response => response.json())
         .then(data => {
           data.forEach(point => {
