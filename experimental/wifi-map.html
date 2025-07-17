@@ -52,7 +52,7 @@
       });
 
       // Загружаем JSON-файл с координатами
-      fetch("{{ '/wifi/points.json?v=' | append: site.github.build_revision | relative_url }}")
+      fetch("/tatsphere/wifi/points.json")
         .then(response => response.json())
         .then(data => {
           data.forEach(point => {
