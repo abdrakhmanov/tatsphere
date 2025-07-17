@@ -1,0 +1,12 @@
+version: '3'
+services:
+  jekyll:
+    image: jekyll/jekyll:stable
+    build: .  # Используем кастомный Dockerfile
+    ports:
+      - "4000:4000"  # Порт локального сервера Jekyll
+    volumes:
+      - .:/srv/jekyll  # Связываем текущую директорию с рабочей в контейнере
+    command: jekyll serve --watch --livereload --force-polling
+    environment:
+      - LANG=C.UTF-8  # Устанавливаем кодировку
