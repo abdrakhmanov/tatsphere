@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Карта Wi-Fi | Республика Татарстан</title>
+  <title></title>
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
   <style>
     html,
@@ -41,34 +41,80 @@
   <div id="map"></div>
 
   <script>
+    const yaform = "https://forms.yandex.ru/cloud/687df9fd02848f00982a1c0a/"
     // Ждём загрузки API Яндекса
     ymaps.ready(init);
 
     function init() {
       // Создание карты
       const map = new ymaps.Map("map", {
-        center: [55.796127, 49.106414], // Центр Казани
-        zoom: 12
+        center: [55.349427, 50.750722], // Центр Татарстана
+        zoom: 8
+      });
+
+      // Создаём кластеризатор
+      const clusterer = new ymaps.Clusterer({
+        preset: 'islands#invertedBlueClusterIcons', // Стиль иконки кластера
+        groupByCoordinates: false, // Позволяет кластеризовать точки с одинаковыми координатами
+        clusterDisableClickZoom: false, // При клике на кластер — увеличиваем масштаб
+        clusterOpenBalloonOnClick: true // Открывать балун при клике на кластер
       });
 
       // Загружаем JSON-файл с координатами
-      fetch("/tatsphere/wifi/points.json")
+      fetch("https://abdrakhmanov.github.io/tatsphere/wifi/points.json")
         .then(response => response.json())
         .then(data => {
+          const geoObjects = [];
+
           data.forEach(point => {
+            const address = encodeURIComponent(point.address || 'Адрес найденной точки доступа');
+            const link = `${yaform}?point_address=${address}`;
+
+            const balloonContent = `
+              <strong>${point.name || 'Wi-Fi точка'}</strong><br>
+              <em>${point.address || 'Адрес не указан'}</em><br>
+              <a href="${link}" target="_blank" class="balloon-button">Предоставить результат проверки</a>
+            `;
+
             const placemark = new ymaps.Placemark([point.lat, point.lon], {
-              balloonContent: point.name || "Wi-Fi точка"
+              balloonContent: balloonContent
             }, {
               preset: 'islands#blueDotIcon'
             });
-            map.geoObjects.add(placemark);
+            geoObjects.push(placemark);
           });
+          // Добавляем все метки в кластеризатор
+          clusterer.add(geoObjects);
+
+          // Добавляем кластеризатор на карту
+          map.geoObjects.add(clusterer);
         })
         .catch(error => {
           console.error("Ошибка при загрузке координат:", error);
         });
+
+      // Обработка клика по пустому месту карты
+      map.events.add('click', function (e) {
+        const coords = e.get('coords');
+        const lat = coords[0].toFixed(6);
+        const lon = coords[1].toFixed(6);
+        const formUrl = `${yaform}?geopoint=${lat},${lon}&free_wifi_exists=yes`;
+
+        const content = `
+          <strong>Добавить точку WiFi?</strong><br>
+          <a href="${formUrl}" target="_blank" class="balloon-button">Перейти к форме</a>
+        `;
+
+        const addPlacemark = new ymaps.Placemark([lat, lon], {
+          balloonContent: content
+        }, {
+          preset: 'islands#darkGreenCircleDotIcon',
+          openEmptyBalloon: true
+        });
+
+        map.geoObjects.add(addPlacemark);
+        addPlacemark.balloon.open();
+      });
     }
   </script>
 </body>
-
-</html>
