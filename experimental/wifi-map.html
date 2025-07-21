@@ -66,7 +66,7 @@
   <div id="map"></div>
 
   <script>
-    const yaform = "https://forms.yandex.ru/cloud/687df9fd02848f00982a1c0a/"
+    const yaform = "https://forms.yandex.ru/cloud/687df9fd02848f00982a1c0a/?from_map=yes"
     // Ждём загрузки API Яндекса
     ymaps.ready(init);
 
@@ -97,7 +97,7 @@
 
           data.forEach(point => {
             const address = encodeURIComponent(point.address || 'Адрес найденной точки доступа');
-            const link = `${yaform}?point_address=${address}`;
+            const link = `${yaform}&point_address=${address}`;
 
             const balloonContent = `
               <strong>${point.name || 'Wi-Fi точка'}</strong><br>
@@ -127,7 +127,7 @@
         const coords = e.get('coords');
         const lat = coords[0].toFixed(6);
         const lon = coords[1].toFixed(6);
-        const formUrl = `${yaform}?geopoint=${lat},${lon}&free_wifi_exists=yes`;
+        const formUrl = `${yaform}&geopoint=${lat},${lon}&free_wifi_exists=yes`;
 
         const content = `
           <strong>Добавить точку WiFi?</strong><br>
