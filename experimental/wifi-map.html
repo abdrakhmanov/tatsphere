@@ -74,7 +74,11 @@
       // Создание карты
       const map = new ymaps.Map("map", {
         center: [55.349427, 50.750722], // Центр Татарстана
-        zoom: 8
+        zoom: 8,
+        controls: ['zoomControl'],
+        behaviors: ['drag', 'multiTouch']
+      }, {
+        suppressMapOpenBlock: true
       });
 
       // Создаём кластеризатор
