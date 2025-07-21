@@ -75,7 +75,7 @@
       const map = new ymaps.Map("map", {
         center: [55.349427, 50.750722], // Центр Татарстана
         zoom: 8,
-        controls: ['zoomControl'],
+        controls: ['zoomControl', 'geolocationControl', 'routeButtonControl', 'typeSelector'],
         behaviors: ['drag', 'multiTouch']
       }, {
         suppressMapOpenBlock: true
